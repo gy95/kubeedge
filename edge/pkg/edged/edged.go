@@ -286,6 +286,9 @@ func (e *edged) GetRequestedContainersInfo(containerName string, options cadviso
 
 func (e *edged) Start() {
 	klog.Info("Starting edged...")
+	klog.Info("---------------------------------------------")
+	klog.Info("edged config is %#v", e)
+	klog.Info("---------------------------------------------")
 	e.volumePluginMgr = NewInitializedVolumePluginMgr(e, ProbeVolumePlugins(""))
 
 	if err := e.initializeModules(); err != nil {
