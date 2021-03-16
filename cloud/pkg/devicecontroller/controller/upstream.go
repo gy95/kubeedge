@@ -91,7 +91,7 @@ func (uc *UpstreamController) dispatchMessage() {
 		if err != nil {
 			klog.Warningf("Parse message: %s resource type with error: %s", msg.GetID(), err)
 			klog.Errorf("================================================================")
-			klog.Errorf("msg is %v", msg)
+			klog.Errorf("msg is %#v", msg)
 			klog.Errorf("================================================================")
 			continue
 		}
