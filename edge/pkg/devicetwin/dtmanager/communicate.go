@@ -147,6 +147,7 @@ func detailRequest(context *dtcontext.DTContext, msg interface{}) (interface{}, 
 	msgID := message.GetID()
 	context.ConfirmMap.Store(msgID, &dttype.DTMessage{Msg: message, Action: dtcommon.SendToCloud, Type: dtcommon.CommModule})
 	beehiveContext.Send(dtcommon.HubModule, *message)
+	klog.Errorf("AAAAAAAAAAAAAAAAAAAAA detail request: %#v", message)
 	return nil, nil
 }
 
