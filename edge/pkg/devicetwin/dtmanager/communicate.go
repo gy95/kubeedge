@@ -103,11 +103,12 @@ func dealLifeCycle(context *dtcontext.DTContext, resource string, msg interface{
 	klog.Errorf("=================================================")
 	if strings.Compare(connectedInfo, connect.CloudConnected) == 0 {
 		if strings.Compare(context.State, dtcommon.Disconnected) == 0 {
-			_, err := detailRequest(context, msg)
-			if err != nil {
-				klog.Errorf("detail request: %v", err)
-				return nil, err
-			}
+			// comment these code: cloud doesn't deal with this msg
+			//_, err := detailRequest(context, msg)
+			//if err != nil {
+			//	klog.Errorf("detail request: %v", err)
+			//	return nil, err
+			//}
 		}
 		context.State = dtcommon.Connected
 	} else if strings.Compare(connectedInfo, connect.CloudDisconnected) == 0 {
