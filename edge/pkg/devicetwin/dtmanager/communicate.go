@@ -98,14 +98,16 @@ func dealLifeCycle(context *dtcontext.DTContext, resource string, msg interface{
 		return nil, errors.New("msg not Message type")
 	}
 	connectedInfo, _ := (message.Content.(string))
+	klog.Errorf("AAAAAAAAAAAAAAAAAA dealLifeCycle: %v", message)
 	if strings.Compare(connectedInfo, connect.CloudConnected) == 0 {
-		if strings.Compare(context.State, dtcommon.Disconnected) == 0 {
-			_, err := detailRequest(context, msg)
-			if err != nil {
-				klog.Errorf("detail request: %v", err)
-				return nil, err
-			}
-		}
+		// comment these code: cloud doesn't deal with this request
+		//if strings.Compare(context.State, dtcommon.Disconnected) == 0 {
+		//	_, err := detailRequest(context, msg)
+		//	if err != nil {
+		//		klog.Errorf("detail request: %v", err)
+		//		return nil, err
+		//	}
+		//}
 		context.State = dtcommon.Connected
 	} else if strings.Compare(connectedInfo, connect.CloudDisconnected) == 0 {
 		context.State = dtcommon.Disconnected
