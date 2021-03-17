@@ -124,7 +124,7 @@ func (eh *EdgeHub) routeToEdge() {
 		err = eh.dispatch(message)
 		if err != nil {
 			klog.Errorf("failed to dispatch message, discard: %v", err)
-		}2
+		}
 	}
 }
 
